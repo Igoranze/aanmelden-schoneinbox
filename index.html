@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>SchoneInbox – Aanmelden</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    body {
+        margin: 0;
+        padding: 60px 20px;
+        font-family: "Inter", Arial, sans-serif;
+        background: #F5F7FA;
+        display: flex;
+        justify-content: center;
+    }
+
+    .card-wrapper {
+        position: relative;
+        max-width: 900px;
+        width: 100%;
+        margin-top: 35%
+    }
+
+    .card {
+        background: #E6F8FB; /* soft aqua background */
+        border: 3px solid #1E1E1E;
+        padding: 60px;
+        border-radius: 6px;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Offset shadow layer */
+    .card-shadow {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        width: 100%;
+        height: 100%;
+        background: #1E1E1E;
+        border-radius: 6px;
+        z-index: 1;
+    }
+
+    .tag {
+        display: inline-block;
+        background: #DFF7FF;
+        padding: 6px 12px;
+        font-size: 14px;
+        font-weight: 600;
+        border: 2px solid #1E1E1E;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        margin: 0;
+        margin-bottom: 16px;
+        font-size: 36px;
+        font-weight: 800;
+        color: #1E1E1E;
+        line-height: 1.2;
+    }
+
+    p {
+        font-size: 18px;
+        color: #4A4A4A;
+        margin-bottom: 40px;
+        max-width: 600px;
+    }
+
+    .form-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    input[type="email"] {
+        flex: 1;
+        padding: 16px 20px;
+        border-radius: 40px;
+        border: 2px solid #1E1E1E;
+        font-size: 18px;
+        outline: none;
+        background: #FFFFFF;
+    }
+
+    input[type="email"]:focus {
+        border-color: #0099CC;
+    }
+
+    button {
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        background: #00D9E1;
+        border: 2px solid #1E1E1E;
+        font-size: 26px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #00C4D0;
+    }
+
+    .checkbox-area {
+        margin-top: 30px;
+        font-size: 14px;
+        color: #1E1E1E;
+        line-height: 1.4;
+    }
+
+    .thank-you {
+        text-align: center;
+        display: none;
+    }
+
+    .thank-you h2 {
+        font-size: 28px;
+        color: #0077B3;
+        font-weight: 700;
+    }
+</style>
+</head>
+<body>
+
+<div class="card-wrapper">
+
+    <div class="card-shadow"></div>
+
+    <div class="card" id="form-card">
+        <div class="tag">AANMELDEN</div>
+
+        <h1>Meld je aan voor een SchoneInbox</h1>
+        <p>Krijg updates en early access zodra we lanceren.</p>
+
+        <form id="signupForm">
+            <div class="form-row">
+                <input type="email" name="email" placeholder="jouw@email.com" required>
+                <button type="submit">→</button>
+            </div>
+
+            <div class="checkbox-area">
+                <label>
+                    <input type="checkbox" required>
+                    Ja ik geef toestemming. We gebruiken je gegevens uitsluitend om je te informeren over SchoneInbox.
+                    <br>Je data wordt veilig en volgens de AVG verwerkt.
+                </label>
+            </div>
+        </form>
+
+        <div class="thank-you" id="thankyou">
+            <h2>Bedankt! Je inbox wordt binnenkort een stuk schoner.</h2>
+            <p>Je staat op onze lijst en ontvangt snel meer updates.</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    // GOOGLE APPS SCRIPT URL HERE
+    const GOOGLE_WEBAPP_URL = "YOUR_GOOGLE_SCRIPT_URL";
+
+    try {
+        await fetch(GOOGLE_WEBAPP_URL, { method: "POST", body: formData });
+
+        document.getElementById("signupForm").style.display = "none";
+        document.getElementById("thankyou").style.display = "block";
+
+    } catch (error) {
+        alert("Er ging iets mis. Probeer later opnieuw.");
+        console.error(error);
+    }
+});
+</script>
+
+</body>
+</html>
