@@ -148,7 +148,7 @@
 
             <div class="checkbox-area">
                 <label>
-                    <input type="checkbox" required>
+                    <input name="avg" type="checkbox" required>
                     Ja ik geef toestemming. We gebruiken je gegevens uitsluitend om je te informeren over SchoneInbox.
                     <br>Je data wordt veilig en volgens de AVG verwerkt.
                 </label>
@@ -170,11 +170,18 @@ document.getElementById("signupForm").addEventListener("submit", async function(
     const formData = new FormData(e.target);
 
     // GOOGLE APPS SCRIPT URL HERE
-    const GOOGLE_WEBAPP_URL = "YOUR_GOOGLE_SCRIPT_URL";
+    const BACKEND_URL = "https://vanpopering.info/formpages/schoneinbox-submit/";
 
     try {
-        await fetch(GOOGLE_WEBAPP_URL, { method: "POST", body: formData });
+        const response = await fetch(BACKEND_URL, {
+            method: "POST",
+            body: formData
+        });
 
+        if (!response.ok) {
+            throw new Error("Backend returned an error");
+        }
+        
         document.getElementById("signupForm").style.display = "none";
         document.getElementById("thankyou").style.display = "block";
 
