@@ -167,6 +167,9 @@
 document.getElementById("signupForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
+    document.getElementById("signupForm").style.display = "none";
+    document.getElementById("thankyou").style.display = "block";
+
     const formData = new FormData(e.target);
 
     // GOOGLE APPS SCRIPT URL HERE
@@ -181,10 +184,6 @@ document.getElementById("signupForm").addEventListener("submit", async function(
         if (!response.ok) {
             throw new Error("Backend returned an error");
         }
-        
-        document.getElementById("signupForm").style.display = "none";
-        document.getElementById("thankyou").style.display = "block";
-
     } catch (error) {
         alert("Er ging iets mis. Probeer later opnieuw.");
         console.error(error);
