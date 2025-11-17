@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>SchoneInbox – Aanmelden</title>
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" href="https://spengenit.nl/aanmelden-schoneinbox/favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -127,6 +127,105 @@
         color: #0077B3;
         font-weight: 700;
     }
+
+    /* =======================================
+   MOBILE RESPONSIVE IMPROVEMENTS
+   ======================================= */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 30px 10px;
+    }
+
+    .card-wrapper {
+        margin-top: 10%;
+    }
+
+    .card {
+        padding: 30px 20px;
+    }
+
+    .card-shadow {
+        top: 8px;
+        left: 8px;
+    }
+
+    .tag {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+
+    h1 {
+        font-size: 26px;
+        line-height: 1.25;
+        margin-bottom: 12px;
+    }
+
+    p {
+        font-size: 15px;
+        margin-bottom: 25px;
+        max-width: 100%;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    input[type="email"] {
+        width: 100%;
+        font-size: 16px;
+        padding: 14px 18px;
+        border-radius: 30px;
+    }
+
+    button {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+        align-self: flex-end;
+        margin-top: 5px;
+    }
+
+    .checkbox-area {
+        font-size: 13px;
+        margin-top: 20px;
+        line-height: 1.4;
+    }
+
+    .thank-you h2 {
+        font-size: 22px;
+        line-height: 1.3;
+    }
+
+    .thank-you p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    button {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+    }
+
+    input[type="email"] {
+        font-size: 15px;
+        padding: 12px 16px;
+    }
+
+    .checkbox-area {
+        font-size: 12px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -138,7 +237,7 @@
     <div class="card" id="form-card">
         <div class="tag">AANMELDEN</div>
 
-        <h1>Meld je aan voor een SchoneInbox</h1>
+        <h1>Meld je aan voor een SchoneInbox.nl</h1>
         <p>Krijg updates en early access zodra we lanceren.</p>
 
         <form id="signupForm">
